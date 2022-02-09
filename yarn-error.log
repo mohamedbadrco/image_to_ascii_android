@@ -1,0 +1,50 @@
+Arguments: 
+  /home/mobadr/.nvm/versions/node/v16.13.2/bin/node /home/mobadr/.nvm/versions/node/v16.13.2/bin/yarnpkg install
+
+PATH: 
+  /tmp/yarn--1644398659748-0.790930828222516:/home/mobadr/Downloads/node_modules/.bin:/home/mobadr/.config/yarn/link/node_modules/.bin:/home/mobadr/.yarn/bin:/home/mobadr/.nvm/versions/node/v16.13.2/libexec/lib/node_modules/npm/bin/node-gyp-bin:/home/mobadr/.nvm/versions/node/v16.13.2/lib/node_modules/npm/bin/node-gyp-bin:/home/mobadr/.nvm/versions/node/v16.13.2/bin/node_modules/npm/bin/node-gyp-bin:/home/mobadr/.nvm/versions/node/v16.13.2/bin:/home/mobadr/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  16.13.2
+
+Platform: 
+  linux arm64
+
+Trace: 
+  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)
+
+npm manifest: 
+  {
+    "name": "awesomeproject",
+    "version": "1.0.0",
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "expo": "~44.0.0",
+      "expo-status-bar": "~1.2.0",
+      "react": "17.0.1",
+      "react-dom": "17.0.1",
+      "react-native": "0.64.3",
+      "react-native-web": "0.17.1"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.12.9"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
