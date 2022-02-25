@@ -1,20 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { Header, Body } from './app/screens/components';
+import React, { useState } from 'react';
+
+
+
 
 export default function App() {
+  const [page, setpage] = useState('home');
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+
+      < Header pageindex={() => {
+        if (page === 'home') {
+          setpage('info');
+        } else {
+          setpage('home');
+        }
+      }} />
+
+
+      <Body page={page} />
+
+    </>
+
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+
+
+
+
+
