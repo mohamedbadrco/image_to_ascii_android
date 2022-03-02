@@ -1,6 +1,6 @@
 import * as Jimp from 'jimp';
 
-export function ascii_img(scale, filename, canvas, outfilename, moreLevels, fontsize, fontcolor) {
+export async function ascii_img(scale, filename, canvas, outfilename, moreLevels, fontsize, fontcolor) {
 
 
     let gscale1 = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
@@ -8,6 +8,8 @@ export function ascii_img(scale, filename, canvas, outfilename, moreLevels, font
     let gscale2 = "@%#*+=-:. ";
 
     let fo;
+
+    console.log('hi in func');
 
     switch (fontcolor) {
         case 'white':
@@ -65,8 +67,11 @@ export function ascii_img(scale, filename, canvas, outfilename, moreLevels, font
 
 
     //Load image to memory 
+    console.log('0 read')
 
-    Jimp.default.read({ uri: filename }, (err, mona) => {
+    Jimp.default.read(filename, (err, mona) => {
+        console.log('1 read')
+
 
         const image = mona.greyscale();
 
@@ -97,8 +102,8 @@ export function ascii_img(scale, filename, canvas, outfilename, moreLevels, font
         let aimg = [];
 
         for (let j = 0, _pj_a = rows; (j < _pj_a); j += 1) {
-            y1 = Number.parseInt((j * h));
-            y2 = Number.parseInt(((j + 1) * h));
+            let y1 = Number.parseInt((j * h));
+            let y2 = Number.parseInt(((j + 1) * h));
 
             if ((j === (rows - 1))) {
                 y2 = H;
@@ -107,8 +112,8 @@ export function ascii_img(scale, filename, canvas, outfilename, moreLevels, font
             aimg.push([]);
 
             for (let i = 0, _pj_b = cols; (i < _pj_b); i += 1) {
-                x1 = Number.parseInt((i * w));
-                x2 = Number.parseInt(((i + 1) * w));
+                let x1 = Number.parseInt((i * w));
+                let x2 = Number.parseInt(((i + 1) * w));
                 if ((i === (cols - 1))) {
                     x2 = W;
                 }
@@ -119,32 +124,38 @@ export function ascii_img(scale, filename, canvas, outfilename, moreLevels, font
 
                 for (let k = x1; k < x2; k++) {
                     for (let l = y1; l < y2; l++) {
-                        sum = sum + Jimp.intToRGBA(image.getPixelColor(k, l)).r;
+                        sum = sum + Jimp.default.intToRGBA(image.getPixelColor(k, l)).r;
                     }
 
                 }
                 avg = sum / (w * h) + 1;
 
                 if (moreLevels) {
-                    gsval = gscale1[Number.parseInt(((avg * 69) / 255))];
+                    let gsval = gscale1[Number.parseInt(((avg * 69) / 255))];
                     if (Number.parseInt(((avg * 9) / 255)) > 69) {
-                        gsval = ' ';
+                        let gsval = ' ';
+                        aimg[j].push(gsval);
                     }
+                    aimg[j].push(gsval);
                 } else {
-                    gsval = gscale2[Number.parseInt(((avg * 9) / 255))];
+                    let gsval = gscale2[Number.parseInt(((avg * 9) / 255))];
                     if (Number.parseInt(((avg * 9) / 255)) > 9) {
-                        gsval = ' ';
+                        let gsval = ' ';
+                        aimg[j].push(gsval);
                     }
+                    aimg[j].push(gsval);
                 }
-                aimg[j].push(gsval);
+
             }
         }
 
-        new Jimp(Number.parseInt(cols * 7), Number.parseInt(rows * 7), canvas, (err, image) => {
+        new Jimp.default(Number.parseInt(cols * 7), Number.parseInt(rows * 7), canvas, (err, image) => {
             if (image) {
+                console.log('here im 3')
 
-                Jimp.loadFont(fo)
+                Jimp.default.loadFont(Jimp.default.FONT_SANS_8_BLACK)
                     .then(font => {
+                        console.log('font on')
 
                         let index_row = - 2;
 
@@ -166,8 +177,9 @@ export function ascii_img(scale, filename, canvas, outfilename, moreLevels, font
 
                         return image
                     }).then(image => {
+                        console.log('here im 4 ')
 
-                        return image.write(`.../asckiiART/${outfilename}`) // save
+                        return image.write(`./asckiiART/${outfilename}`) // save
                     })
 
             }

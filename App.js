@@ -1,9 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { Header, Body } from './app/screens/components';
 import React, { useState } from 'react';
-
-
 
 
 export default function App() {
@@ -11,7 +7,7 @@ export default function App() {
 
   return (
     <>
-    
+
       < Header pageindex={() => {
         if (page === 'home') {
           setpage('info');
@@ -21,7 +17,7 @@ export default function App() {
       }} />
 
 
-      <Body page={page} />
+      <Body page={page}  setpage={setpage}/>
 
     </>
 

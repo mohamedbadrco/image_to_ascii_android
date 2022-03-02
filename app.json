@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "AwesomeProject",
-    "slug": "AwesomeProject",
+    "name": "Hash to Ascii",
+    "slug": "hashtoascii",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/hash.jpg",
+    "icon": "./app/assets/icon.png",
     "splash": {
-      "image": "./app/assets/Hash.svg",
+      "image": "./app/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff",
       "plugins": [
@@ -25,16 +25,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "m.o.o"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./app/assets/hash.jpg",
+        "foregroundImage": "./app/assets/icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "m.o.o"
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }
