@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, Pressable } from 'react-native';
 import { ImagePickerexa } from './filepicker';
 import { Selecter } from './selecter';
