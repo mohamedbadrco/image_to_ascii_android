@@ -17,7 +17,11 @@ export default function App() {
       }} />
 
 
-      <Body page={page}  setpage={setpage}/>
+      <Body page={page} setpagew={() => {
+        setpage('wating')
+      }} setpagef={() => {
+        setpage('finish')
+      }} />
 
     </>
 

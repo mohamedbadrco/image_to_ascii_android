@@ -116,22 +116,26 @@ export function Body(props) {
 
                 let out = `asckii_art_${scale}_${color}`;
 
-
                 if (image) {
 
-                  props.setpage('wating')
+                  let h = await props.setpagew()
+
+                  console.log(props.page)
+
+                  console.log(h)
 
                   console.log('hi')
 
                   let result = await ascii_img(scale, image, backroundcolor, out, levels, fontsize, color);
 
-                  if (result){
-                    props.setpage('view')
+                  if (result) {
+                    props.setpagef()
+                    console.log('hi done')
+
+                    console.log(props.page)
 
                   }
-
-
-
+                  console.log(props.page)
                 }
 
               }} >
@@ -167,8 +171,9 @@ export function Body(props) {
         </Text>
       </View>
     );
-  }else if(props.page === 'wating'){
-    <View style={styles.info}>
+  } else if (props.page === 'wating') {
+    return (
+      <View style={styles.info}>
 
 
         <Text> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lorem elit, efficitur vitae tellus dictum, egestas accumsan felis. Praesent augue ipsum, facilisis et est sit amet, commodo lobortis ex. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc blandit urna faucibus rhoncus auctor. Nulla facilisi. Integer volutpat viverra lorem, nec fringilla quam dignissim id. Phasellus lorem elit, gravida ac massa ac, posuere tristique magna. Sed vitae mollis augue.
@@ -181,7 +186,15 @@ export function Body(props) {
 
           Suspendisse potenti. Suspendisse congue, dolor non sagittis consectetur, metus magna egestas est, non pharetra libero diam vitae ante. Phasellus mollis et ex non maximus. Integer accumsan felis et turpis volutpat dignissim. Curabitur consectetur odio non tellus aliquet, et volutpat quam dapibus. Sed et lacinia justo. Sed sed mauris nec orci sodales ullamcorper. Cras vehicula ultrices mattis. Aliquam consequat, elit et sagittis aliquam, sapien eros egestas turpis, at consectetur nunc magna id est. Etiam ut volutpat tortor. Curabitur vel sem tortor. Duis vitae turpis interdum, pulvinar massa vel, cursus eros.
         </Text>
-      </View>
+      </View>)
+
+  } else if (props.page === 'finish') {
+    return (
+      <View style={styles.info}>
+        <Text>
+          Finsih
+        </Text>
+      </View>)
 
   }
 
